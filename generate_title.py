@@ -21,9 +21,9 @@ import copy
 def set_args():
     """设置模型预测所需参数"""
     parser = argparse.ArgumentParser()
-    parser.add_argument('--device', default='0', type=str, help='设置预测时使用的显卡,使用CPU设置成-1即可')
-    parser.add_argument('--model_path', default='output_dir/checkpoint-139805', type=str, help='模型文件路径')
-    parser.add_argument('--vocab_path', default='vocab/vocab.txt', type=str, help='词表，该词表为小词表，并增加了一些新的标记')
+    parser.add_argument('--device', default='1', type=str, help='设置预测时使用的显卡,使用CPU设置成-1即可')
+    parser.add_argument('--model_path', default='./model/openmodel/', type=str, help='模型文件路径')
+    parser.add_argument('--vocab_path', default='/opt/xiankai/GPT2-NewsTitle/model/openmodel/vocab.txt', type=str, help='词表，该词表为小词表，并增加了一些新的标记')
     parser.add_argument('--batch_size', default=3, type=int, help='生成标题的个数')
     parser.add_argument('--generate_max_len', default=32, type=int, help='生成标题的最大长度')
     parser.add_argument('--repetition_penalty', default=1.2, type=float, help='重复处罚率')
@@ -177,8 +177,9 @@ def main():
     model.eval()
     print('开始对新闻生成标题，输入CTRL + Z，则退出')
     try:
-        while True:
-            content = input("输入的新闻正文为:")
+        #while True:
+            #content = input("输入的新闻正文为:")
+            content = '值岁末，一年一度的中央经济工作会议牵动全球目光。今年的会议，背景特殊、节点关键、意义重大。12月16日至18日。北京，京西宾馆。站在“两个一百年”奋斗目标的历史交汇点上，2020年中央经济工作会议谋划着中国经济发展大计。习近平总书记在会上发表了重要讲话，深刻分析国内外经济形势，提出2021年经济工作总体要求和政策取向，部署重点任务，为开局“十四五”、开启全面建设社会主义现代化国家新征程定向领航。'
             titles = predict_one_sample(model, tokenizer, device, args, content)
             for i, title in enumerate(titles):
                 print("生成的第{}个标题为：{}".format(i + 1, title))

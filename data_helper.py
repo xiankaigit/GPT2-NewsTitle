@@ -118,8 +118,8 @@ def build_news_data(content_path, title_path, train_save_path, test_save_path):
 
 
 if __name__ == '__main__':
-    content_path_dir = "data_dir/train_text.txt"
-    title_path_dir = "data_dir/train_label.txt"
-    train_save_path_dir = "data_dir/train_data.json"
-    test_save_path_dir = "data_dir/test_data.json"
+    content_path_dir = "/opt/xiankai/GPT2-NewsTitle/data/original_data/train_text.txt"
+    title_path_dir = "/opt/xiankai/GPT2-NewsTitle/data/original_data/train_label.txt"
+    train_save_path_dir = "/opt/xiankai/GPT2-NewsTitle/data/train_data/train_data.json"
+    test_save_path_dir = "/opt/xiankai/GPT2-NewsTitle/data/train_data/test_data.json"
     build_news_data(content_path_dir, title_path_dir, train_save_path_dir, test_save_path_dir)
